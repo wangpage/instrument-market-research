@@ -1,6 +1,6 @@
 # 智能乐器 & 传统乐器跨平台市场调研
 
-横向对比 Amazon、eBay、Walmart、TikTok Shop、Temu 五个平台上 11 类乐器的价格、销量代理指标、用户评论。
+横向对比 Amazon、eBay、Walmart、TikTok Shop、Temu 五个平台上 55 个子品类（11 个大类）乐器的价格、销量代理指标、用户评论。
 
 ## 快速开始
 
@@ -19,6 +19,26 @@ python3 main.py --platform amazon --category smart_guitar --top-n 10
 # 4. 跑全量
 python3 main.py --all
 ```
+
+## 品类总览
+
+共 55 个子品类，按 11 个大类组织：
+
+| 大类 | 子品类 |
+| --- | --- |
+| 传统弦乐器（拨弦） | guitar、electric_guitar、bass_guitar、ukulele、harp、mandolin、banjo |
+| 传统弦乐器（弓弦） | violin、cello、viola、double_bass |
+| 键盘 / 击弦 | acoustic_piano、digital_piano、hammered_dulcimer |
+| 木管 | flute、clarinet、oboe、saxophone |
+| 铜管 | trumpet、trombone、french_horn |
+| 打击（体鸣 + 膜鸣） | marimba、xylophone、gong、cymbals、acoustic_drum、djembe、cajon、timpani |
+| 中国传统乐器 | guzheng、guqin、pipa、erhu、dizi、hulusi、suona、yangqin |
+| 世界民族乐器 | morin_khuur、sitar、tabla、shamisen、oud、didgeridoo |
+| 现代电子 / MIDI | synthesizer、electronic_drum、electronic_keyboard、drum_pad、midi_keyboard、launchpad、midi_guitar |
+| 电声 / 静音 | electric_violin、silent_piano |
+| 智能乐器 | smart_guitar、smart_piano、smart_drum |
+
+完整定义见 [config/keywords.py](config/keywords.py)。
 
 ## 数据字典
 
