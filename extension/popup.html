@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  body { width: 420px; padding: 12px; font-family: -apple-system, sans-serif; font-size: 13px; }
+  h2 { margin: 0 0 8px; font-size: 15px; }
+  .row { display: flex; gap: 6px; margin-bottom: 6px; flex-wrap: wrap; }
+  .row label { flex: 1; cursor: pointer; }
+  button { padding: 6px 10px; cursor: pointer; border-radius: 4px; border: 1px solid #ccc; background: #fff; }
+  button.primary { background: #007aff; color: white; border-color: #007aff; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .stats { background: #f5f5f7; padding: 8px; border-radius: 4px; margin: 8px 0; }
+  .stats div { margin-bottom: 2px; }
+  textarea { width: 100%; box-sizing: border-box; font-family: ui-monospace, monospace; font-size: 12px; }
+  .section { border-top: 1px solid #eee; padding-top: 8px; margin-top: 8px; }
+  .small { font-size: 11px; color: #666; }
+  .tag { display: inline-block; background: #e0e7ff; color: #3730a3; border-radius: 3px; padding: 1px 6px; margin-right: 3px; font-size: 11px; }
+</style>
+</head>
+<body>
+  <h2>🎸 乐器市场调研抓取器</h2>
+
+  <div class="stats">
+    <div><b>已抓商品：</b><span id="count">0</span> 条</div>
+    <div><b>队列剩余：</b><span id="queue">0</span></div>
+    <div class="small">由 <span id="platform_stats"></span> 组成</div>
+  </div>
+
+  <div class="section">
+    <div><b>选择平台</b></div>
+    <div class="row">
+      <label><input type="checkbox" class="platform" value="amazon" checked> Amazon</label>
+      <label><input type="checkbox" class="platform" value="ebay" checked> eBay</label>
+      <label><input type="checkbox" class="platform" value="walmart" checked> Walmart</label>
+      <label><input type="checkbox" class="platform" value="temu" checked> Temu</label>
+      <label><input type="checkbox" class="platform" value="tiktok_shop"> TikTok Shop</label>
+    </div>
+  </div>
+
+  <div class="section">
+    <div><b>关键词</b><span class="small"> (每行一个，可填品类名自动带分类)</span></div>
+    <textarea id="keywords" rows="20">acoustic guitar|traditional|guitar|false
+classical guitar|traditional|guitar|false
+travel guitar|traditional|guitar|false
+dreadnought guitar|traditional|guitar|false
+electric guitar|traditional|electric_guitar|false
+stratocaster guitar|traditional|electric_guitar|false
+les paul guitar|traditional|electric_guitar|false
+telecaster guitar|traditional|electric_guitar|false
+bass guitar|traditional|bass_guitar|false
+4 string bass|traditional|bass_guitar|false
+5 string bass|traditional|bass_guitar|false
+ukulele|traditional|ukulele|false
+soprano ukulele|traditional|ukulele|false
+concert ukulele|traditional|ukulele|false
+tenor ukulele|traditional|ukulele|false
+lever harp|traditional|harp|false
+lyre harp|traditional|harp|false
+celtic harp|traditional|harp|false
+pedal harp|traditional|harp|false
+mandolin|traditional|mandolin|false
+f-style mandolin|traditional|mandolin|false
+a-style mandolin|traditional|mandolin|false
+banjo|traditional|banjo|false
+5-string banjo|traditional|banjo|false
+bluegrass banjo|traditional|banjo|false
+violin|traditional|violin|false
+student violin|traditional|violin|false
+4/4 violin|traditional|violin|false
+electric violin|traditional|violin|false
+cello|traditional|cello|false
+student cello|traditional|cello|false
+4/4 cello|traditional|cello|false
+full size cello|traditional|cello|false
+viola instrument|traditional|viola|false
+student viola|traditional|viola|false
+16 inch viola|traditional|viola|false
+upright bass instrument|traditional|double_bass|false
+double bass instrument|traditional|double_bass|false
+contrabass|traditional|double_bass|false
+upright piano|traditional|acoustic_piano|false
+grand piano|traditional|acoustic_piano|false
+spinet piano|traditional|acoustic_piano|false
+digital piano|traditional|digital_piano|false
+88 key digital piano|traditional|digital_piano|false
+weighted key piano|traditional|digital_piano|false
+stage piano|traditional|digital_piano|false
+hammered dulcimer|traditional|hammered_dulcimer|false
+mountain dulcimer|traditional|hammered_dulcimer|false
+concert flute|traditional|flute|false
+student flute|traditional|flute|false
+silver flute|traditional|flute|false
+piccolo flute|traditional|flute|false
+clarinet instrument|traditional|clarinet|false
+Bb clarinet|traditional|clarinet|false
+student clarinet|traditional|clarinet|false
+bass clarinet|traditional|clarinet|false
+oboe instrument|traditional|oboe|false
+student oboe|traditional|oboe|false
+english horn|traditional|oboe|false
+alto saxophone|traditional|saxophone|false
+tenor saxophone|traditional|saxophone|false
+soprano saxophone|traditional|saxophone|false
+student saxophone|traditional|saxophone|false
+trumpet instrument|traditional|trumpet|false
+Bb trumpet|traditional|trumpet|false
+student trumpet|traditional|trumpet|false
+pocket trumpet|traditional|trumpet|false
+trombone instrument|traditional|trombone|false
+tenor trombone|traditional|trombone|false
+student trombone|traditional|trombone|false
+french horn|traditional|french_horn|false
+single french horn|traditional|french_horn|false
+double french horn|traditional|french_horn|false
+marimba instrument|traditional|marimba|false
+concert marimba|traditional|marimba|false
+student marimba|traditional|marimba|false
+xylophone instrument|traditional|xylophone|false
+student xylophone|traditional|xylophone|false
+glockenspiel|traditional|xylophone|false
+chau gong|traditional|gong|false
+bao gong|traditional|gong|false
+wind gong|traditional|gong|false
+drum cymbals|traditional|cymbals|false
+crash cymbal|traditional|cymbals|false
+ride cymbal|traditional|cymbals|false
+hi hat cymbal|traditional|cymbals|false
+acoustic drum kit|traditional|acoustic_drum|false
+5 piece drum set|traditional|acoustic_drum|false
+jazz drum kit|traditional|acoustic_drum|false
+snare drum|traditional|acoustic_drum|false
+djembe drum|traditional|djembe|false
+african djembe|traditional|djembe|false
+wooden djembe|traditional|djembe|false
+cajon drum|traditional|cajon|false
+cajon percussion|traditional|cajon|false
+flamenco cajon|traditional|cajon|false
+timpani drum|traditional|timpani|false
+kettle drum|traditional|timpani|false
+guzheng|traditional|guzheng|false
+chinese zither|traditional|guzheng|false
+21 string guzheng|traditional|guzheng|false
+guqin|traditional|guqin|false
+chinese 7 string zither|traditional|guqin|false
+chinese qin|traditional|guqin|false
+pipa instrument|traditional|pipa|false
+chinese lute pipa|traditional|pipa|false
+4 string pipa|traditional|pipa|false
+erhu|traditional|erhu|false
+chinese violin|traditional|erhu|false
+2 string erhu|traditional|erhu|false
+dizi bamboo flute|traditional|dizi|false
+chinese bamboo flute|traditional|dizi|false
+dizi flute|traditional|dizi|false
+hulusi|traditional|hulusi|false
+cucurbit flute|traditional|hulusi|false
+chinese hulusi|traditional|hulusi|false
+suona|traditional|suona|false
+chinese trumpet suona|traditional|suona|false
+suona horn|traditional|suona|false
+yangqin|traditional|yangqin|false
+chinese dulcimer|traditional|yangqin|false
+yang qin|traditional|yangqin|false
+morin khuur|traditional|morin_khuur|false
+horsehead fiddle|traditional|morin_khuur|false
+mongolian fiddle|traditional|morin_khuur|false
+sitar instrument|traditional|sitar|false
+indian sitar|traditional|sitar|false
+student sitar|traditional|sitar|false
+tabla drum|traditional|tabla|false
+indian tabla|traditional|tabla|false
+tabla set|traditional|tabla|false
+shamisen|traditional|shamisen|false
+japanese shamisen|traditional|shamisen|false
+tsugaru shamisen|traditional|shamisen|false
+oud instrument|traditional|oud|false
+arabic oud|traditional|oud|false
+turkish oud|traditional|oud|false
+didgeridoo|traditional|didgeridoo|false
+aboriginal didgeridoo|traditional|didgeridoo|false
+bamboo didgeridoo|traditional|didgeridoo|false
+synthesizer keyboard|modern|synthesizer|false
+analog synthesizer|modern|synthesizer|false
+modular synthesizer|modern|synthesizer|false
+virtual analog synth|modern|synthesizer|false
+electronic drum kit|modern|electronic_drum|true
+electronic drum set|modern|electronic_drum|true
+mesh head drum kit|modern|electronic_drum|true
+electronic keyboard 61 keys|modern|electronic_keyboard|false
+portable keyboard piano|modern|electronic_keyboard|false
+arranger keyboard|modern|electronic_keyboard|false
+drum pad controller|modern|drum_pad|false
+mpc drum pad|modern|drum_pad|false
+sampler pad|modern|drum_pad|false
+finger drum pad|modern|drum_pad|false
+MIDI keyboard controller|modern|midi_keyboard|false
+MIDI keyboard 49 keys|modern|midi_keyboard|false
+MIDI keyboard 25 keys|modern|midi_keyboard|false
+akai midi keyboard|modern|midi_keyboard|false
+Novation Launchpad|modern|launchpad|false
+ableton launchpad|modern|launchpad|false
+grid controller|modern|launchpad|false
+MIDI guitar controller|modern|midi_guitar|false
+jamstik MIDI guitar|modern|midi_guitar|false
+guitar to MIDI|modern|midi_guitar|false
+electric violin|modern|electric_violin|false
+silent violin|modern|electric_violin|false
+yamaha electric violin|modern|electric_violin|false
+silent digital piano|modern|silent_piano|false
+hybrid piano|modern|silent_piano|false
+disklavier piano|modern|silent_piano|false
+smart guitar|modern|smart_guitar|true
+Populele|modern|smart_guitar|true
+smart ukulele LED|modern|smart_guitar|true
+AI guitar|modern|smart_guitar|true
+smart piano|modern|smart_piano|true
+AI keyboard|modern|smart_piano|true
+TheONE smart piano|modern|smart_piano|true
+LED keyboard learning|modern|smart_piano|true
+smart drum pad|modern|smart_drum|true
+AI drum practice|modern|smart_drum|true
+LED drum pad|modern|smart_drum|true</textarea>
+    <div class="small">格式：<code>关键词|大类|子品类|is_smart</code></div>
+  </div>
+
+  <div class="section row">
+    <button id="start" class="primary">▶️ 开始批量抓取</button>
+    <button id="scrape_current">🎯 只抓当前页</button>
+  </div>
+
+  <div class="section row">
+    <button id="export_csv">📊 导出 CSV</button>
+    <button id="export_json">💾 导出 JSON</button>
+    <button id="clear">🗑️ 清空数据</button>
+  </div>
+
+  <div class="small" style="margin-top:10px;">
+    <b>提示：</b>点"开始"会在当前 tab 依次打开每个 search URL 并自动抽取。全程看得见，反爬无效（读 DOM）。Temu/TikTok 如果跳 captcha 手动过一次继续跑。
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

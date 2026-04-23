@@ -1,0 +1,46 @@
+# Secrets
+.env
+.env.local
+.env.*.local
+
+# Browser session / cookies (contains login tokens)
+browser_state/
+
+# Scraped data & intermediate outputs
+data/
+data.zip
+analysis/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Playwright
+.playwright/
+playwright-report/
+test-results/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Claude local state
+.claude/

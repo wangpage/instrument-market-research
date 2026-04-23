@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "乐器市场调研抓取器",
+  "version": "1.0.0",
+  "description": "在 Amazon / eBay / Walmart / Temu / TikTok Shop 上一键抓取商品数据，导出 CSV",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting",
+    "downloads",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.amazon.com/*",
+    "https://www.ebay.com/*",
+    "https://www.walmart.com/*",
+    "https://www.temu.com/*",
+    "https://www.tiktok.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon128.png"
+  },
+  "icons": {
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.amazon.com/s*"],
+      "js": ["content/_common.js", "content/amazon.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.ebay.com/sch/*"],
+      "js": ["content/_common.js", "content/ebay.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.walmart.com/search*"],
+      "js": ["content/_common.js", "content/walmart.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.temu.com/search_result.html*"],
+      "js": ["content/_common.js", "content/temu.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.tiktok.com/shop/s/*"],
+      "js": ["content/_common.js", "content/tiktok_shop.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
