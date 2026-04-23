@@ -38,10 +38,6 @@ python3 main.py --all
 - 用户国家分布 —— 平台内部数据
 - 精确成交单数（除 Temu/TikTok Shop 外）
 
-## 项目结构
-
-详见 [/Users/page/.claude/plans/distributed-wandering-island.md](../../.claude/plans/distributed-wandering-island.md)。
-
 ## 输出
 
 - `data/processed/products_master.xlsx` — 全部商品
